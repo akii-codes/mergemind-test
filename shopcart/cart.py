@@ -17,7 +17,10 @@ class Cart:
         return round_money(sum(price * qty for _, price, qty in self.items))
 
     def apply_coupon(self, code):
-        self.coupon = COUPONS[code]
+        key = code.strip().upper()
+        if key not in COUPONS:
+            raise ValueError(f"unknown coupon: {code}")
+        self.coupon = COUPONS[key]
 
     def total(self):
         amount = self.subtotal()
