@@ -6,6 +6,6 @@ FLAT_FEE = 4.99
 
 def shipping_fee(order_amount: float) -> float:
     """Flat fee below the free-shipping threshold, free at or above it."""
-    if order_amount > FREE_SHIPPING_FROM:
+    if order_amount >= FREE_SHIPPING_FROM:
         return 0.0
     return FLAT_FEE
